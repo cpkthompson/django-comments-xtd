@@ -543,11 +543,6 @@ def xtd_comment_gravatar_url(email, size=48):
             (hashlib.md5(email.lower().encode('utf-8')).hexdigest(),
              urlencode({'s': str(size)})))
 
-@register.filter
-def xtd_comment_gravatar_url_24(email, size=24):
-    return ("http://www.gravatar.com/avatar/%s?%s&d=mm" %
-            (hashlib.md5(email.lower().encode('utf-8')).hexdigest(),
-             urlencode({'s': str(size)})))
 # ----------------------------------------------------------------------
 @register.filter
 def xtd_comment_gravatar(email, size=48):
@@ -557,7 +552,7 @@ def xtd_comment_gravatar(email, size=48):
 
 # ----------------------------------------------------------------------
 @register.filter
-def xtd_comment_gravatar(email, size=24):
+def xtd_comment_gravatar_24(email, size=24):
     url = xtd_comment_gravatar_url(email, size)
     return mark_safe('<img style="border-radius:50%%" src="%s" height="%d" width="%d">' %
                      (url, size, size))
