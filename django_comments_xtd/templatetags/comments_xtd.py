@@ -543,7 +543,11 @@ def xtd_comment_gravatar_url(email, size=48):
             (hashlib.md5(email.lower().encode('utf-8')).hexdigest(),
              urlencode({'s': str(size)})))
 
-
+@register.filter
+def xtd_comment_gravatar_url_24(email, size=24):
+    return ("http://www.gravatar.com/avatar/%s?%s&d=mm" %
+            (hashlib.md5(email.lower().encode('utf-8')).hexdigest(),
+             urlencode({'s': str(size)})))
 # ----------------------------------------------------------------------
 @register.filter
 def xtd_comment_gravatar(email, size=48):
