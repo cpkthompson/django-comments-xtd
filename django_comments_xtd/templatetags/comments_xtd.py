@@ -555,7 +555,12 @@ def xtd_comment_gravatar(email, size=48):
     return mark_safe('<img style="border-radius:50%%" src="%s" height="%d" width="%d">' %
                      (url, size, size))
 
-
+# ----------------------------------------------------------------------
+@register.filter
+def xtd_comment_gravatar(email, size=24):
+    url = xtd_comment_gravatar_url(email, size)
+    return mark_safe('<img style="border-radius:50%%" src="%s" height="%d" width="%d">' %
+                     (url, size, size))
 # ----------------------------------------------------------------------
 @register.filter
 def comments_xtd_api_list_url(obj):
